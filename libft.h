@@ -6,16 +6,16 @@
 /*   By: kmykhail <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/28 15:57:28 by kmykhail          #+#    #+#             */
-/*   Updated: 2018/03/25 16:53:15 by kmykhail         ###   ########.fr       */
+/*   Updated: 2017/10/28 15:57:30 by kmykhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
-# include <unistd.h>
 # include <stddef.h>
-# define BUFF_SIZE 100000
+# include <unistd.h>
+# define BUFF_SIZE 32
 
 typedef	struct				s_list
 {
@@ -29,8 +29,6 @@ typedef	struct				s_list
 	int						pov;
 	int						cnt;
 }							t_list;
-int							ft_abs(int a);
-int							ft_dig_all(char *line);
 int							get_next_line(const int fd, char **line);
 int							ft_atoi(const char *str);
 int							ft_tolower(int c);
@@ -48,8 +46,6 @@ size_t n);
 size_t						ft_strlcat(char *dst, const char *src,\
 size_t size);
 char						*ft_strcat(char *s1, const char *s2);
-int							ft_atoi_base(const char *str, int base);
-char						*ft_itoa_base(size_t value, int base);
 char						*ft_strchr(const char *s, int c);
 char						*ft_strcpy(char *dst, const char *src);
 char						*ft_strdup(const char *s1);
@@ -82,7 +78,6 @@ int							ft_strnequ(char const *s1, char const *s2,\
 size_t n);
 char						*ft_strsub(char const *s, unsigned int start,\
 size_t len);
-char						*ft_strjoin_myq(char *s1, char *s2);
 char						*ft_strjoin(char const *s1, char const *s2);
 char						*ft_strtrim(char const *s);
 char						**ft_strsplit(char const *s, char c);
@@ -93,7 +88,6 @@ void						ft_putendl(char const *s);
 void						ft_putnbr(int n);
 void						ft_putchar_fd(char c, int fd);
 void						ft_putstr_fd(char const *s, int fd);
-void						ft_free_double(char **arr, int size);
 void						ft_putendl_fd(char const *s, int fd);
 void						ft_putnbr_fd(int n, int fd);
 void						ft_lstdel(t_list **alst,\

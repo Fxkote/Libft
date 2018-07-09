@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmykhail <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 20:43:23 by kmykhail          #+#    #+#             */
-/*   Updated: 2017/11/02 20:43:25 by kmykhail         ###   ########.fr       */
+/*   Created: 2017/10/26 15:38:09 by kmykhail          #+#    #+#             */
+/*   Updated: 2017/10/26 15:38:11 by kmykhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (n > 2147483647 || n <= -2147483648)
-		return ;
-	if (n == -2147483648)
+	char	*n_dst;
+	char	*n_src;
+
+	n_dst = dst;
+	n_src = (char*)src;
+	if (n_dst > n_src)
 	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
+		while (len > 0)
+		{
+			n_dst[len - 1] = n_src[len - 1];
+			len--;
+		}
 	}
-	if (n < 0 && n > -2147483648)
-	{
-		n = n * (-1);
-		ft_putchar_fd('-', fd);
-	}
-	if (n > 9 && n <= 2147483647)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd((n % 10) + '0', fd);
-	return ;
+	if (n_dst < n_src)
+		ft_memcpy(n_dst, n_src, len);
+	return (n_dst);
 }

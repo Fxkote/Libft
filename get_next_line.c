@@ -51,7 +51,7 @@ char	*ft_del_mem(char *mass)
 	return (mass);
 }
 
-char	*ft_strjoin_my(char *s1, char *s2)
+char	*ft_strjoin_my(char const *s1, char const *s2)
 {
 	int		i;
 	int		l;
@@ -72,7 +72,7 @@ char	*ft_strjoin_my(char *s1, char *s2)
 	}
 	while (((char*)s2)[l])
 		qw[i++] = s2[l++];
-	ft_strdel(&s1);
+	free((char*)s1);
 	qw[i] = '\0';
 	return (qw);
 }

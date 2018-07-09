@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmykhail <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/02 20:43:23 by kmykhail          #+#    #+#             */
-/*   Updated: 2017/11/02 20:43:25 by kmykhail         ###   ########.fr       */
+/*   Created: 2017/11/02 15:23:41 by kmykhail          #+#    #+#             */
+/*   Updated: 2017/11/02 15:23:47 by kmykhail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	if (n > 2147483647 || n <= -2147483648)
-		return ;
-	if (n == -2147483648)
+	char	*buff;
+	size_t	i;
+
+	i = 0;
+	if (!s || !f)
+		return (NULL);
+	buff = (char*)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!buff)
+		return (NULL);
+	while (s[i])
 	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
+		buff[i] = f(s[i]);
+		i++;
 	}
-	if (n < 0 && n > -2147483648)
-	{
-		n = n * (-1);
-		ft_putchar_fd('-', fd);
-	}
-	if (n > 9 && n <= 2147483647)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd((n % 10) + '0', fd);
-	return ;
+	buff[i] = '\0';
+	return (buff);
 }
